@@ -1,0 +1,361 @@
+.home-overview-row {
+    align-items: stretch;
+}
+
+.home-overview-column {
+    display: flex;
+    min-height: 0;
+}
+
+.home-overview-column > .card,
+.home-overview-stack {
+    width: 100%;
+    min-height: 0;
+}
+
+.home-overview-stack {
+    display: grid;
+    grid-template-rows: repeat(2, minmax(0, 1fr));
+    gap: 24px;
+    height: 100%;
+    margin: 0;
+}
+
+.home-overview-stack > [class*="col-"] {
+    display: flex;
+    min-height: 0;
+    margin: 0;
+    padding: 0;
+}
+
+.home-overview-stack .card {
+    width: 100%;
+    min-height: 0;
+}
+
+.home-overview-stack .work-experience-card,
+.home-overview-stack .expertise-card {
+    height: 100%;
+}
+
+.profile-overview-column .card-body {
+    display: flex;
+    flex-direction: column;
+}
+
+.profile-overview-column .card-text {
+    margin-top: 14px;
+    font-size: 15px;
+    line-height: 1.45;
+}
+
+.profile-overview-column .common-button-groups {
+    margin-top: 16px;
+}
+
+.profile-overview-column .social-media-icon {
+    margin-bottom: 0;
+    padding-top: 20px;
+}
+
+.card-projects .card-body {
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+}
+
+.card-projects .card-title {
+    flex: none;
+}
+
+.card-projects .projects-main {
+    flex: 1;
+    min-height: 0;
+}
+
+.card-projects .projects-main > .row {
+    display: grid;
+    grid-template-rows: repeat(3, minmax(0, 1fr));
+    gap: 16px;
+    height: 100%;
+    margin: 0;
+}
+
+.card-projects .projects-main > .row > [class*="col-"] {
+    margin: 0;
+    padding: 0;
+}
+
+.card-projects .projects-main > .row > [class*="col-"],
+.card-projects .project-item,
+.card-projects .project-item .image {
+    min-height: 0;
+    height: 100%;
+}
+
+.card-projects .project-item .image {
+    padding: 16px;
+}
+
+.card-projects .project-item .image img {
+    object-fit: contain;
+}
+
+.work-experience-card {
+    overflow: hidden;
+}
+
+.work-experience-main {
+    max-height: 205px;
+    overflow: hidden;
+    font-family: "Playfair Display", serif;
+}
+
+.work-experience-track {
+    animation: experience-scroll 24s linear infinite;
+    will-change: transform;
+}
+
+.work-experience-cycle {
+    padding-bottom: 18px;
+}
+
+.work-experience-main:hover .work-experience-track {
+    animation-play-state: paused;
+}
+
+.work-experience-main .work-experience-slider {
+    animation: none;
+    margin: 0;
+}
+
+.work-experience-main .work-experience-slider + .work-experience-slider {
+    margin-top: 10px;
+}
+
+.work-experience-main .work-experience-slider li {
+    display: grid;
+    grid-template-columns: 76px minmax(0, 1fr);
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 14px;
+}
+
+.work-experience-main .work-experience-slider li:last-child {
+    margin-bottom: 0;
+}
+
+.work-experience-main .work-experience-slider .date {
+    display: block;
+    margin: 0;
+    font-size: 13px;
+    line-height: 1.4;
+    white-space: nowrap;
+}
+
+.work-experience-main .work-experience-slider .info {
+    display: grid;
+    grid-template-columns: 36px minmax(0, 1fr);
+    align-items: center;
+    gap: 10px;
+    min-width: 0;
+    width: auto;
+}
+
+.work-experience-main .work-experience-slider .info .icon {
+    width: 36px;
+    height: 36px;
+}
+
+.work-experience-main .work-experience-slider .info .icon img {
+    width: 22px;
+    height: 22px;
+    object-fit: contain;
+}
+
+.work-experience-main .work-experience-slider .text {
+    min-width: 0;
+}
+
+.work-experience-main .work-experience-slider .text .title {
+    font-size: 15px;
+    line-height: 1.35;
+}
+
+.work-experience-main .work-experience-slider .text .subtitle {
+    width: auto;
+    margin-top: 2px;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 1.4;
+    overflow-wrap: anywhere;
+}
+
+@keyframes experience-scroll {
+    from {
+        transform: translateY(0);
+    }
+
+    to {
+        transform: translateY(-50%);
+    }
+}
+
+@media (min-width: 769px) {
+    .home-overview-row {
+        --home-overview-height: 720px;
+    }
+
+    .home-overview-column {
+        height: var(--home-overview-height);
+    }
+
+    .home-overview-column > .card,
+    .home-overview-stack {
+        height: 100%;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .work-experience-track {
+        animation: none;
+    }
+
+    .work-experience-main {
+        overflow-y: auto;
+    }
+}
+
+@media (max-width: 992px) {
+    .profile-overview-column .card-text {
+        font-size: 12px;
+        line-height: 1.45;
+    }
+
+    .work-experience-main {
+        max-height: 190px;
+    }
+
+    .work-experience-main .work-experience-slider li {
+        grid-template-columns: 64px minmax(0, 1fr);
+        gap: 8px;
+    }
+
+    .work-experience-main .work-experience-slider .date {
+        font-size: 11px;
+    }
+
+    .work-experience-main .work-experience-slider .info {
+        grid-template-columns: 30px minmax(0, 1fr);
+        gap: 7px;
+    }
+
+    .work-experience-main .work-experience-slider .info .icon {
+        width: 30px;
+        height: 30px;
+    }
+
+    .work-experience-main .work-experience-slider .info .icon img {
+        width: 18px;
+        height: 18px;
+    }
+
+    .work-experience-main .work-experience-slider .text .title {
+        font-size: 13px;
+    }
+
+    .work-experience-main .work-experience-slider .text .subtitle {
+        font-size: 10px;
+    }
+}
+
+@media (max-width: 768px) {
+    .home-overview-column {
+        display: block;
+        height: auto;
+    }
+
+    .home-overview-stack {
+        display: grid;
+        grid-template-rows: auto;
+        gap: 24px;
+        height: auto;
+    }
+
+    .card-projects .projects-main > .row {
+        display: flex;
+        height: auto;
+    }
+
+    .card-projects .projects-main > .row > [class*="col-"],
+    .card-projects .project-item,
+    .card-projects .project-item .image {
+        height: auto;
+    }
+
+    .home-overview-stack .work-experience-card,
+    .home-overview-stack .expertise-card {
+        height: auto;
+    }
+
+    .profile-overview-column .card-text {
+        font-size: 15px;
+        line-height: 1.5;
+    }
+
+    .profile-overview-column .social-media-icon {
+        margin-top: 20px;
+        padding-top: 0;
+    }
+
+    .work-experience-card {
+        min-height: 330px;
+    }
+
+    .work-experience-main {
+        max-height: 245px;
+    }
+
+    .work-experience-main .work-experience-slider li {
+        grid-template-columns: 82px minmax(0, 1fr);
+        gap: 14px;
+    }
+
+    .work-experience-main .work-experience-slider .date {
+        font-size: 14px;
+    }
+
+    .work-experience-main .work-experience-slider .info {
+        grid-template-columns: 38px minmax(0, 1fr);
+        gap: 12px;
+    }
+
+    .work-experience-main .work-experience-slider .info .icon {
+        width: 38px;
+        height: 38px;
+    }
+
+    .work-experience-main .work-experience-slider .info .icon img {
+        width: 23px;
+        height: 23px;
+    }
+
+    .work-experience-main .work-experience-slider .text .title {
+        font-size: 16px;
+    }
+
+    .work-experience-main .work-experience-slider .text .subtitle {
+        font-size: 13px;
+    }
+}
+
+@media (max-width: 420px) {
+    .work-experience-main .work-experience-slider li {
+        grid-template-columns: 1fr;
+        gap: 6px;
+    }
+
+    .work-experience-main .work-experience-slider .info {
+        grid-template-columns: 34px minmax(0, 1fr);
+    }
+}

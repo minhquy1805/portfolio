@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="./css/style.css">
-    <link rel="stylesheet" href="./css/reset.css">
+    <link rel="stylesheet" href="./css/services.css">
     <link rel="icon" type="image" href="./assets/logo-black.jpg" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -43,7 +43,7 @@
                                   <a class="nav-link active" href="/services.html"><i class="bi bi-database"></i>Services</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="./work.html"><i class="bi bi-send"></i>Works</a>
+                                    <a class="nav-link" href="./work.html"><i class="bi bi-send"></i>Projects</a>
                                 </li>
                                 
                                 <li class="nav-item">
@@ -97,7 +97,7 @@
                     <a class="nav-link active" href="./services.html"><i class="bi bi-database"></i>Services</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="./work.html"><i class="bi bi-send"></i>Works</a>
+                    <a class="nav-link" href="./work.html"><i class="bi bi-send"></i>Projects</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="./contact.html"><i class="bi bi-send"></i>Contact</a>
@@ -149,7 +149,7 @@
                                 <ul class="nav list-unstyled">
                                     <li><a href="https://www.facebook.com/nguyenminhquy1805"><i class="bi bi-facebook"></i></a></li>
                                     <li><a href="https://github.com/minhquy1805"><i class="bi bi-github"></i></a></li>
-                                    <li><a href="https://join.skype.com/invite/tdNt5AlLBL2I"><i class="bi bi-skype"></i></a></li>
+                                    <li><a href="https://www.linkedin.com/in/quy-nguyen-823109344/?locale=vi"><i class="bi bi-linkedin"></i></a></li>
                                     <li><a href="mailto:minhquy073@gmail.com"><i class="bi bi-envelope-at-fill"></i></a></li>
                                 </ul>
                             </div>
@@ -160,14 +160,16 @@
                     <div class="card content-box-card">
                         <div class="card-body">
                             <div class="top-info">
-                                <div class="text">
+                                <div class="top-info-header">
                                     <h1 class="main-title">
                                         Services I <span>Offered</span>
                                     </h1>
-                                    <p class="card-text">Transforming Ideas into Innovative Reality, Elevate Your Vision with Our Expert<strong> Product Design and Development</strong>  Services!</p>
+                                    <div class="available-btn">
+                                        <span><i class="bi bi-circle-fill"></i>Available For Hire</span>
+                                    </div>
                                 </div>
-                                <div class="available-btn">
-                                    <span><i class="bi bi-circle-fill"></i>Available For Hire</span>
+                                <div class="top-info-description">
+                                    <p class="card-text">I build practical software solutions with a strong focus on backend engineering, system architecture, clean code, cloud deployment, and modern frontend development.</p>
                                 </div>
                             </div>
                             <div class="services">
@@ -187,11 +189,11 @@
                                     <div class="col-lg-3 col-6">
                                         <div class="services-item text-center">
                                             <div class="image">
-                                                <img src="./assets/ui-design.png"/>
+                                                <img src="./assets/c-sharp.png"/>
                                             </div>
                                             <div class="text">
                                                 <h3 class="title">
-                                                    Mobile Developer
+                                                    C# Developer
                                                 </h3>
                                             </div>
                                         </div>
@@ -211,11 +213,11 @@
                                     <div class="col-lg-3  col-6">
                                         <div class="services-item text-center">
                                             <div class="image">
-                                                <img src="./assets/user-experience.png"/>
+                                                <img src="./assets/framework.png"/>
                                             </div>
                                             <div class="text">
                                                 <h3 class="title">
-                                                    UI UX Developer
+                                                    System Design
                                                 </h3>
                                             </div>
                                         </div>
@@ -268,21 +270,22 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="block-image">
-                                        <img src="./assets/bia-picture.jpg" alt="">
-                                    </div>
+
                                 </div>
                             </div>
+
                             <div class="frequently-asked-questions">
-                                <h2 class="main-common-title" id="headingOne">
+                                <h2 class="main-common-title" id="faqHeading">
                                     Frequently Asked Questions
                                 </h2>
+
                                 <div class="frequently-asked-questions-main">
-                                    <div class="accordion">
+                                    <div class="accordion" id="faqAccordion">
+
                                         <div class="accordion-item">
                                             <h4 class="accordion-header" id="headingOne">
-                                                <button class="accordion-button collapsed" data-bs-target="#collapseOne" data-bs-toggle="collapse" aria-expanded="true" aria-controls="collapseOne">
-                                                    What about me?
+                                                <button class="accordion-button collapsed" data-bs-target="#collapseOne" data-bs-toggle="collapse" aria-expanded="false" aria-controls="collapseOne">
+                                                    Who am I as a developer?
                                                     <span class="ms-auto d-flex">
                                                         <span class="icon ms-4" style="display: flex; justify-content: center; align-items: center;">
                                                             <i class="bi bi-plus icon-plus"></i>
@@ -291,16 +294,19 @@
                                                     </span>
                                                 </button>
                                             </h4>
-                                            <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne">
+                                            <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#faqAccordion">
                                                 <div class="accordion-body">
-                                                    <p>With two years of coding experience, I've had the opportunity to earn various recognitions and awards, including my IELTS certification. My educational journey spans across reputable institutions like Aptech and university, where I've honed my skills and deepened my understanding of technology.</p>
+                                                    <p>
+                                                        I am a software developer focused on backend engineering, system design, and cloud-ready application architecture. My main technology stack includes C#, ASP.NET Core, SQL Server, React, Docker, and cloud infrastructure. I enjoy building real-world systems with clean structure, maintainable code, and production-oriented practices.
+                                                    </p>
                                                 </div>
                                             </div>
                                         </div>
+
                                         <div class="accordion-item">
                                             <h4 class="accordion-header" id="headingTwo">
-                                                <button class="accordion-button collapsed" data-bs-target="#collapseTwo" data-bs-toggle="collapse" aria-expanded="true" aria-controls="collapseTwo">
-                                                    What is Web developer?
+                                                <button class="accordion-button collapsed" data-bs-target="#collapseTwo" data-bs-toggle="collapse" aria-expanded="false" aria-controls="collapseTwo">
+                                                    What is my main technology stack?
                                                     <span class="ms-auto d-flex">
                                                         <span class="icon ms-4" style="display: flex; justify-content: center; align-items: center;">
                                                             <i class="bi bi-plus icon-plus"></i>
@@ -309,16 +315,19 @@
                                                     </span>
                                                 </button>
                                             </h4>
-                                            <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo">
+                                            <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#faqAccordion">
                                                 <div class="accordion-body">
-                                                    <p>A Web Developer is a professional who creates, maintains, and enhances websites and web applications. Web development is a crucial part of the modern digital world, and it involves both the visual and functional aspects of websites.</p>
+                                                    <p>
+                                                        My current stack is centered around .NET backend development with ASP.NET Core, C#, SQL Server, ADO.NET/Dapper-style data access, Clean Architecture, RESTful APIs, authentication, authorization, Redis, RabbitMQ, Docker, and CI/CD. On the frontend side, I work with React, TypeScript, Vite, Ant Design, and I am also expanding toward Next.js for public-facing web applications.
+                                                    </p>
                                                 </div>
                                             </div>
                                         </div>
+
                                         <div class="accordion-item">
                                             <h4 class="accordion-header" id="headingThree">
-                                                <button class="accordion-button collapsed" data-bs-target="#collapseThree" data-bs-toggle="collapse" aria-expanded="true" aria-controls="collapseThree">
-                                                    What is mobile developer?
+                                                <button class="accordion-button collapsed" data-bs-target="#collapseThree" data-bs-toggle="collapse" aria-expanded="false" aria-controls="collapseThree">
+                                                    What kind of backend systems do I build?
                                                     <span class="ms-auto d-flex">
                                                         <span class="icon ms-4" style="display: flex; justify-content: center; align-items: center;">
                                                             <i class="bi bi-plus icon-plus"></i>
@@ -327,16 +336,19 @@
                                                     </span>
                                                 </button>
                                             </h4>
-                                            <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree">
+                                            <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#faqAccordion">
                                                 <div class="accordion-body">
-                                                    <p>A Mobile Developer is a professional responsible for designing and creating applications for mobile devices such as smartphones and tablets. As mobile apps become increasingly integral to daily life, mobile developers are in high demand across industries.</p>
+                                                    <p>
+                                                        I build backend systems that focus on authentication, role-based authorization, content management, audit logging, media handling, notifications, and interaction features such as views, likes, comments, and moderation. I care about clear module boundaries, transaction consistency, error handling, scalability, and maintainable service design.
+                                                    </p>
                                                 </div>
                                             </div>
                                         </div>
+
                                         <div class="accordion-item">
                                             <h4 class="accordion-header" id="headingFour">
-                                                <button class="accordion-button collapsed" data-bs-target="#collapseFour" data-bs-toggle="collapse" aria-expanded="true" aria-controls="collapseFour">
-                                                    What is Devops developer?
+                                                <button class="accordion-button collapsed" data-bs-target="#collapseFour" data-bs-toggle="collapse" aria-expanded="false" aria-controls="collapseFour">
+                                                    What is Clean Architecture and why do I use it?
                                                     <span class="ms-auto d-flex">
                                                         <span class="icon ms-4" style="display: flex; justify-content: center; align-items: center;">
                                                             <i class="bi bi-plus icon-plus"></i>
@@ -345,15 +357,60 @@
                                                     </span>
                                                 </button>
                                             </h4>
-                                            <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour">
+                                            <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#faqAccordion">
                                                 <div class="accordion-body">
-                                                    <p>DevOps is a set of practices that bridges the gap between development (Dev) and operations (Ops) teams to improve the efficiency, speed, and quality of software development and deployment. By fostering collaboration and automating key processes, DevOps aims to shorten the software development lifecycle while delivering high-quality software reliably.</p>
+                                                    <p>
+                                                        Clean Architecture is a way of organizing software so that business logic is separated from frameworks, databases, and external services. I use it to make applications easier to maintain, test, extend, and refactor. In my projects, I separate responsibilities into layers such as Domain, Application, Infrastructure, and API.
+                                                    </p>
                                                 </div>
                                             </div>
                                         </div>
+
                                         <div class="accordion-item">
                                             <h4 class="accordion-header" id="headingFive">
-                                                <button class="accordion-button collapsed" data-bs-target="#collapseFive" data-bs-toggle="collapse" aria-expanded="true" aria-controls="collapseFive">
+                                                <button class="accordion-button collapsed" data-bs-target="#collapseFive" data-bs-toggle="collapse" aria-expanded="false" aria-controls="collapseFive">
+                                                    What is my approach to Modular Monolith and Microservices?
+                                                    <span class="ms-auto d-flex">
+                                                        <span class="icon ms-4" style="display: flex; justify-content: center; align-items: center;">
+                                                            <i class="bi bi-plus icon-plus"></i>
+                                                            <i class="bi bi-dash icon-minus"></i>
+                                                        </span>
+                                                    </span>
+                                                </button>
+                                            </h4>
+                                            <div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive" data-bs-parent="#faqAccordion">
+                                                <div class="accordion-body">
+                                                    <p>
+                                                        I prefer building a strong Modular Monolith first, with clear boundaries between modules such as Identity, Content, Media, SEO, Reading, Interaction, Notification, and Audit. After the core system is stable, selected modules can be extracted into microservices for learning, scaling, or independent deployment. This approach helps me balance software quality, learning depth, and practical delivery.
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="accordion-item">
+                                            <h4 class="accordion-header" id="headingSix">
+                                                <button class="accordion-button collapsed" data-bs-target="#collapseSix" data-bs-toggle="collapse" aria-expanded="false" aria-controls="collapseSix">
+                                                    What DevOps and Cloud skills am I developing?
+                                                    <span class="ms-auto d-flex">
+                                                        <span class="icon ms-4" style="display: flex; justify-content: center; align-items: center;">
+                                                            <i class="bi bi-plus icon-plus"></i>
+                                                            <i class="bi bi-dash icon-minus"></i>
+                                                        </span>
+                                                    </span>
+                                                </button>
+                                            </h4>
+                                            <div id="collapseSix" class="accordion-collapse collapse" aria-labelledby="headingSix" data-bs-parent="#faqAccordion">
+                                                <div class="accordion-body">
+                                                    <p>
+                                                        I am developing practical DevOps and cloud skills through Docker, Docker Compose, Linux servers, Nginx reverse proxy, HTTPS with SSL certificates, CI/CD pipelines, container image tagging, registry publishing, and deployment to cloud virtual machines. My long-term direction is to become stronger in Cloud, DevSecOps, and cloud security engineering.
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="accordion-item">
+                                            <h4 class="accordion-header" id="headingSeven">
+                                                <button class="accordion-button collapsed" data-bs-target="#collapseSeven" data-bs-toggle="collapse" aria-expanded="false" aria-controls="collapseSeven">
                                                     What is the difference between HTTP and HTTPS?
                                                     <span class="ms-auto d-flex">
                                                         <span class="icon ms-4" style="display: flex; justify-content: center; align-items: center;">
@@ -363,58 +420,22 @@
                                                     </span>
                                                 </button>
                                             </h4>
-                                            <div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive">
+                                            <div id="collapseSeven" class="accordion-collapse collapse" aria-labelledby="headingSeven" data-bs-parent="#faqAccordion">
                                                 <div class="accordion-body">
-                                                    <p><strong>HTTP</strong> (Hypertext Transfer Protocol) is used to transmit data between a client (like a browser) and a server. It's a simple request-response protocol but is not secure, as data is sent in plain text.</p>
-                                                    <p><strong>HTTPS</strong> (Hypertext Transfer Protocol Secure) adds encryption using SSL/TLS, ensuring that data is securely transmitted and protected from eavesdropping or tampering. It also verifies the website's identity with certificates, providing additional security compared to HTTP.</p>
+                                                    <p>
+                                                        <strong>HTTP</strong> is the protocol used for communication between a client and a server, but the data is transferred in plain text.
+                                                    </p>
+                                                    <p>
+                                                        <strong>HTTPS</strong> adds encryption through TLS, protecting data from being easily intercepted or modified. In production systems, HTTPS is essential for security, authentication, user trust, and safe API communication.
+                                                    </p>
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="accordion-item">
-                                            <h4 class="accordion-header" id="headingSix">
-                                                <button class="accordion-button collapsed" data-bs-target="#collapseSix" data-bs-toggle="collapse" aria-expanded="true" aria-controls="collapseSix">
-                                                    What is the difference between Object-Oriented Programming (OOP) and Functional Programming?
-                                                    <span class="ms-auto d-flex">
-                                                        <span class="icon ms-4" style="display: flex; justify-content: center; align-items: center;">
-                                                            <i class="bi bi-plus icon-plus"></i>
-                                                            <i class="bi bi-dash icon-minus"></i>
-                                                        </span>
-                                                    </span>
-                                                </button>
-                                            </h4>
-                                            <div id="collapseSix" class="accordion-collapse collapse" aria-labelledby="headingSix">
-                                                <div class="accordion-body">
-                                                    <p><strong>OOP:</strong>
-                                                        Focuses on objects that encapsulate data and behavior. It uses classes, inheritance, and polymorphism to structure programs. Key concepts include state and mutable objects.</p>
-                                                    <p><strong>Functional Programming:</strong>
-                                                        Emphasizes functions that avoid changing state or data. It uses pure functions, recursion, and higher-order functions, aiming for immutability and side-effect-free computations.</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="accordion-item">
-                                            <h4 class="accordion-header" id="headingSeven">
-                                                <button class="accordion-button collapsed" data-bs-target="#collapseSeven" data-bs-toggle="collapse" aria-expanded="true" aria-controls="collapseSeven">
-                                                    What is the difference between == and === in JavaScript?
-                                                    <span class="ms-auto d-flex">
-                                                        <span class="icon ms-4" style="display: flex; justify-content: center; align-items: center;">
-                                                            <i class="bi bi-plus icon-plus"></i>
-                                                            <i class="bi bi-dash icon-minus"></i>
-                                                        </span>
-                                                    </span>
-                                                </button>
-                                            </h4>
-                                            <div id="collapseSeven" class="accordion-collapse collapse" aria-labelledby="headingSeven">
-                                                <div class="accordion-body">
-                                                   <p>In JavaScript, == is the loose equality operator, which compares values after performing type coercion, meaning it converts the operands to the same type before comparing.
 
-                                                     === is the strict equality operator, which compares both value and type without performing any type conversion. This means both the value and the data type must be identical for === to return true.</p>
-                                            </div>
-                                        </div>
-                                        </div>
                                         <div class="accordion-item">
                                             <h4 class="accordion-header" id="headingEight">
-                                                <button class="accordion-button collapsed" data-bs-target="#collapseEight" data-bs-toggle="collapse" aria-expanded="true" aria-controls="collapseEight">
-                                                    Can you explain what a RESTful API is? 
+                                                <button class="accordion-button collapsed" data-bs-target="#collapseEight" data-bs-toggle="collapse" aria-expanded="false" aria-controls="collapseEight">
+                                                    What is a RESTful API?
                                                     <span class="ms-auto d-flex">
                                                         <span class="icon ms-4" style="display: flex; justify-content: center; align-items: center;">
                                                             <i class="bi bi-plus icon-plus"></i>
@@ -423,16 +444,19 @@
                                                     </span>
                                                 </button>
                                             </h4>
-                                            <div id="collapseEight" class="accordion-collapse collapse" aria-labelledby="headingEight">
+                                            <div id="collapseEight" class="accordion-collapse collapse" aria-labelledby="headingEight" data-bs-parent="#faqAccordion">
                                                 <div class="accordion-body">
-                                                    <p>A RESTful API (Representational State Transfer) is an architectural style for designing networked applications. It uses HTTP requests to perform standard operations like GET, POST, PUT, and DELETE to communicate between a client and a server. RESTful APIs are stateless, meaning each request from the client contains all the information the server needs to fulfill that request.</p>
+                                                    <p>
+                                                        A RESTful API is an architectural style for designing web APIs using HTTP methods such as GET, POST, PUT, PATCH, and DELETE. I use REST APIs to connect frontend applications with backend services, while keeping endpoints clear, predictable, stateless, and easy to consume.
+                                                    </p>
                                                 </div>
                                             </div>
                                         </div>
+
                                         <div class="accordion-item">
                                             <h4 class="accordion-header" id="headingNine">
-                                                <button class="accordion-button collapsed" data-bs-target="#collapseNine" data-bs-toggle="collapse" aria-expanded="true" aria-controls="collapseNine">
-                                                    What is the difference between Stateful and Stateless widgets in Flutter?
+                                                <button class="accordion-button collapsed" data-bs-target="#collapseNine" data-bs-toggle="collapse" aria-expanded="false" aria-controls="collapseNine">
+                                                    What frontend technologies do I use?
                                                     <span class="ms-auto d-flex">
                                                         <span class="icon ms-4" style="display: flex; justify-content: center; align-items: center;">
                                                             <i class="bi bi-plus icon-plus"></i>
@@ -441,17 +465,19 @@
                                                     </span>
                                                 </button>
                                             </h4>
-                                            <div id="collapseNine" class="accordion-collapse collapse" aria-labelledby="headingNine">
+                                            <div id="collapseNine" class="accordion-collapse collapse" aria-labelledby="headingNine" data-bs-parent="#faqAccordion">
                                                 <div class="accordion-body">
-                                                    <p><strong>Stateless Widgets</strong>These are immutable widgets, meaning once they are built, they cannot change. They do not hold any state and are used for UI elements that don’t need to update dynamically.</p>
-                                                    <p><strong>Stateful Widgets</strong>These can change over time based on user interaction or other factors. Stateful widgets hold state information, which can be updated, and when the state changes, the widget is rebuilt to reflect the changes.</p>
+                                                    <p>
+                                                        I use React, TypeScript, Vite, React Router, React Query, Ant Design, and modern frontend architecture to build admin dashboards and management systems. I am also learning Next.js to build public websites with better routing, rendering strategies, SEO support, and production readiness.
+                                                    </p>
                                                 </div>
                                             </div>
                                         </div>
+
                                         <div class="accordion-item">
                                             <h4 class="accordion-header" id="headingTen">
-                                                <button class="accordion-button collapsed" data-bs-target="#collapseTen" data-bs-toggle="collapse" aria-expanded="true" aria-controls="collapseTen">
-                                                    What is the difference between margin and padding in CSS?
+                                                <button class="accordion-button collapsed" data-bs-target="#collapseTen" data-bs-toggle="collapse" aria-expanded="false" aria-controls="collapseTen">
+                                                    What is my long-term direction?
                                                     <span class="ms-auto d-flex">
                                                         <span class="icon ms-4" style="display: flex; justify-content: center; align-items: center;">
                                                             <i class="bi bi-plus icon-plus"></i>
@@ -460,16 +486,19 @@
                                                     </span>
                                                 </button>
                                             </h4>
-                                            <div id="collapseTen" class="accordion-collapse collapse" aria-labelledby="headingTen">
+                                            <div id="collapseTen" class="accordion-collapse collapse" aria-labelledby="headingTen" data-bs-parent="#faqAccordion">
                                                 <div class="accordion-body">
-                                                    <p>In CSS, both margin and padding are used to create space around elements, but they serve different purposes.</p>
-                                                    <p><strong>Padding: </strong>Refers to the space inside an element, between the content and the element’s border. It affects the internal spacing of the element.</p>
-                                                    <p><strong>Margin: </strong>Refers to the space outside an element, creating distance between the element and its neighboring elements or parent container.</p>
+                                                    <p>
+                                                        My long-term direction is to become a strong software engineer with deep knowledge in backend development, cloud infrastructure, security, distributed systems, and system architecture. I want to build systems that are not only functional, but also reliable, maintainable, secure, and ready for real-world production environments.
+                                                    </p>
                                                 </div>
                                             </div>
                                         </div>
+
+                                    </div>
                                 </div>
                             </div>
+
                             <div class="work-together-slider">
                                 <div class="slider-main">
                                     <div class="slider-item">
@@ -499,235 +528,13 @@
         </div>
     </footer>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js"></script>
     <script src="https://unpkg.com/i18next@21.6.13/i18next.min.js"></script>
-    <script>
-        document.addEventListener('DOMContentLoaded', function(){
-            document.querySelectorAll('.btn-dark-theme').forEach(button => {
-                button.addEventListener('click', function(){
-                    // Toggle dark mode
-                    document.body.classList.toggle('dark');
-                    
-                    // Lấy cả hai logo trong header và offcanvas-header
-                    const logoHeader = document.querySelector('.header-logo img');
-                    const logoOffcanvas = document.querySelector('.offcanvas-title img');
-
-                    // Thay đổi logo cho chế độ dark và light
-                    if (document.body.classList.contains('dark')) {
-                        logoHeader.src = './assets/app.png'; // Logo cho chế độ dark trong header
-                        logoOffcanvas.src = './assets/app.png'; // Logo cho chế độ dark trong offcanvas-header
-                    } else {
-                        logoHeader.src = './assets/categories.png'; // Logo cho chế độ light trong header
-                        logoOffcanvas.src = './assets/categories.png'; // Logo cho chế độ light trong offcanvas-header
-                    }
-                });
-            });
-
-            const dropdown = document.querySelector('.header-info .dropdown');
-
-            // Lắng nghe sự kiện khi mở dropdown
-            dropdown.addEventListener('show.bs.dropdown', function() {
-                this.classList.add('show'); // Thêm class 'show' khi dropdown mở
-            });
-
-            // Lắng nghe sự kiện khi đóng dropdown
-            dropdown.addEventListener('hide.bs.dropdown', function() {
-                this.classList.remove('show'); // Gỡ class 'show' khi dropdown đóng
-            });
-
-            const resources = {
-                en: {
-                    translation: {
-                        "home": "Home",
-                        "about": "About",
-                        "services": "Services",
-                        "works": "Works",
-                        "contact": "Contact",
-                        "letsTalk": "Let's Talk",
-                        "introduction": "As a fresh graduate passionate about technology, I have completed various full-stack and DevOps projects, gaining valuable experience. I'm seeking a dynamic environment to grow my skills and build a lasting career.",
-                        "bookCall": "Book A Call",
-                        "copyEmail": "Copy Email",
-                        "EN": "EN",
-                        "changeLanguage": "Change languages",
-                        "changeAppearance": "Change appearance",
-                        "letsWorkTogether": "Let's <span class='wave'>👋</span> Work Together",
-                        "servicesOffered": "Services I <span>Offered</span>",
-                        "servicesDescription": "Transforming Ideas into Innovative Reality, Elevate Your Vision with Our Expert <strong>Product Design and Development</strong> Services!",
-                        "availableForHire": "Available For Hire",
-                        "faqTitle1": "What about me?",
-                        "faqAnswer1": "With two years of coding experience, I've had the opportunity to earn various recognitions and awards, including my IELTS certification. My educational journey spans across reputable institutions like Aptech and university, where I've honed my skills and deepened my understanding of technology.",
-                        "faqTitle2": "What is Web developer?",
-                        "faqAnswer2": "A Web Developer is a professional who creates, maintains, and enhances websites and web applications. Web development is a crucial part of the modern digital world, and it involves both the visual and functional aspects of websites.",
-                        "faqTitle3": "What is mobile developer?",
-                        "faqAnswer3": "A Mobile Developer is a professional responsible for designing and creating applications for mobile devices such as smartphones and tablets. As mobile apps become increasingly integral to daily life, mobile developers are in high demand across industries.",
-                        "faqTitle4": "What is DevOps developer?",
-                        "faqAnswer4": "DevOps is a set of practices that bridges the gap between development (Dev) and operations (Ops) teams to improve the efficiency, speed, and quality of software development and deployment.",
-                        "faqTitle5": "What is the difference between HTTP and HTTPS?",
-                        "faqAnswer5": "HTTP (Hypertext Transfer Protocol) is used to transmit data between a client and a server, while HTTPS adds encryption using SSL/TLS, ensuring secure data transmission.",
-                        "faqTitle6": "What is the difference between OOP and Functional Programming?",
-                        "faqAnswer6": "OOP focuses on objects that encapsulate data and behavior, while Functional Programming emphasizes functions that avoid changing state or data.",
-                        "faqTitle7": "What is the difference between == and === in JavaScript?",
-                        "faqAnswer7": "== compares values with type coercion, while === compares both value and type without type conversion.",
-                        "faqTitle8": "Can you explain what a RESTful API is?",
-                        "faqAnswer8": "A RESTful API is an architectural style for designing networked applications using HTTP requests to perform standard operations.",
-                        "faqTitle9": "What is the difference between Stateful and Stateless widgets in Flutter?",
-                        "faqAnswer9": "Stateless widgets are immutable and do not hold any state, while Stateful widgets can change over time based on user interaction.",
-                        "faqTitle10": "What is the difference between margin and padding in CSS?",
-                        "faqAnswer10": "Margin refers to the space outside an element, while padding refers to the space inside an element between the content and the border.",
-                        "letsWorkTogether": "Let's <span class='wave'>👋</span> Work Together"
-                    }
-                },
-                vi: {
-                    translation: {
-                        "home": "Trang chủ",
-                        "about": "Giới thiệu",
-                        "services": "Dịch vụ",
-                        "works": "Công việc",
-                        "contact": "Liên hệ",
-                        "letsTalk": "Hãy nói chuyện",
-                        "introduction": "Là một sinh viên mới tốt nghiệp đam mê công nghệ, tôi đã hoàn thành nhiều dự án full-stack và DevOps, tích lũy được nhiều kinh nghiệm quý báu. Tôi đang tìm kiếm một môi trường năng động để phát triển kỹ năng và xây dựng sự nghiệp lâu dài.",
-                        "bookCall": "Đặt lịch gọi",
-                        "copyEmail": "Sao chép Email",
-                        "EN": "VN",
-                        "changeLanguage": "Thay đổi ngôn ngữ",
-                        "changeAppearance": "Thay đổi giao diện",
-                        "letsWorkTogether": "Hãy <span class='wave'>👋</span> làm việc cùng nhau",
-                        "servicesOffered": "Dịch Vụ Tôi <span>Cung Cấp</span>",
-                        "servicesDescription": "Biến ý tưởng thành hiện thực sáng tạo, nâng tầm tầm nhìn của bạn với dịch vụ <strong>Thiết kế và Phát triển sản phẩm</strong> chuyên nghiệp của chúng tôi!",
-                        "availableForHire": "Sẵn sàng làm việc",
-                        "faqTitle1": "Thông tin về tôi?",
-                        "faqAnswer1": "Với hai năm kinh nghiệm lập trình, tôi đã có cơ hội đạt được nhiều chứng nhận và giải thưởng, bao gồm chứng chỉ IELTS. Hành trình học tập của tôi kéo dài qua các tổ chức uy tín như Aptech và đại học, nơi tôi rèn luyện kỹ năng và hiểu sâu hơn về công nghệ.",
-                        "faqTitle2": "Nhà phát triển web là gì?",
-                        "faqAnswer2": "Nhà phát triển web là người tạo ra, duy trì và nâng cấp các trang web và ứng dụng web. Phát triển web là phần quan trọng trong thế giới kỹ thuật số hiện đại, liên quan đến cả khía cạnh hình ảnh và chức năng của trang web.",
-                        "faqTitle3": "Nhà phát triển di động là gì?",
-                        "faqAnswer3": "Nhà phát triển di động chịu trách nhiệm thiết kế và tạo ra các ứng dụng cho các thiết bị di động như điện thoại thông minh và máy tính bảng.",
-                        "faqTitle4": "Nhà phát triển DevOps là gì?",
-                        "faqAnswer4": "DevOps là tập hợp các phương pháp kết nối giữa đội phát triển và đội vận hành để cải thiện hiệu quả, tốc độ và chất lượng của quy trình phát triển và triển khai phần mềm.",
-                        "faqTitle5": "Sự khác biệt giữa HTTP và HTTPS là gì?",
-                        "faqAnswer5": "HTTP là giao thức để truyền tải dữ liệu giữa máy khách và máy chủ, trong khi HTTPS sử dụng mã hóa SSL/TLS để bảo mật việc truyền dữ liệu.",
-                        "faqTitle6": "Sự khác biệt giữa Lập trình Hướng đối tượng và Lập trình Hàm là gì?",
-                        "faqAnswer6": "Lập trình Hướng đối tượng tập trung vào các đối tượng bao gồm dữ liệu và hành vi, trong khi Lập trình Hàm nhấn mạnh vào các hàm không thay đổi trạng thái hoặc dữ liệu.",
-                        "faqTitle7": "Sự khác biệt giữa == và === trong JavaScript?",
-                        "faqAnswer7": "== so sánh giá trị sau khi ép kiểu, trong khi === so sánh cả giá trị và kiểu dữ liệu mà không ép kiểu.",
-                        "faqTitle8": "Bạn có thể giải thích về RESTful API là gì?",
-                        "faqAnswer8": "RESTful API là phong cách kiến trúc để thiết kế các ứng dụng mạng sử dụng các yêu cầu HTTP để thực hiện các thao tác tiêu chuẩn.",
-                        "faqTitle9": "Sự khác biệt giữa widget Stateful và Stateless trong Flutter là gì?",
-                        "faqAnswer9": "Widget Stateless không thể thay đổi trạng thái, trong khi widget Stateful có thể thay đổi theo tương tác của người dùng.",
-                        "faqTitle10": "Sự khác biệt giữa margin và padding trong CSS là gì?",
-                        "faqAnswer10": "Margin là khoảng cách bên ngoài một phần tử, trong khi padding là khoảng cách bên trong một phần tử giữa nội dung và viền.",
-                        "letsWorkTogether": "Hãy <span class='wave'>👋</span> làm việc cùng nhau"
-                    }
-                }
-            };
-            const savedLanguage = localStorage.getItem('language') || 'en';
-            i18next.init({ lng: savedLanguage, resources }, function(err, t) {
-                updateContent();
-            });
-            function updateContent() {
-                document.querySelector('.nav-link[href="./index.html"]').innerHTML = `<i class="bi bi-house"></i> ` + i18next.t('home');
-                document.querySelector('.nav-link[href="./about.html"]').innerHTML = `<i class="bi bi-person"></i> ` + i18next.t('about');
-                document.querySelector('.nav-link[href="/services.html"]').innerHTML = `<i class="bi bi-database"></i> ` + i18next.t('services');
-                document.querySelector('.nav-link[href="./work.html"]').innerHTML = `<i class="bi bi-send"></i> ` + i18next.t('works');
-                document.querySelector('.nav-link[href="./contact.html"]').innerHTML = `<i class="bi bi-chat-left-text"></i> ` + i18next.t('contact');
-                document.querySelector('.header-info a').innerHTML = i18next.t('letsTalk') + `<i class="bi bi-graph-up-arrow"></i>`;
-                document.querySelector('.card-text').innerHTML = i18next.t('introduction');
-                document.querySelector('.btn-call').innerHTML = `<i class="bi bi-telephone-outbound"></i> ` + i18next.t('bookCall');
-                document.querySelector('.btn-copy').innerHTML = `<i class="bi bi-copy"></i> ` + i18next.t('copyEmail');
-                document.querySelector('.header-info .dropdown .btn').innerHTML = i18next.t('EN') + '<i class="bi bi-chevron-down"></i>';
-                document.querySelector('.offcanvas-body .nav-link[href="./index.html"]').innerHTML = `<i class="bi bi-house"></i> ` + i18next.t('home');
-                document.querySelector('.offcanvas-body .nav-link[href="./about.html"]').innerHTML = `<i class="bi bi-person"></i> ` + i18next.t('about');
-                document.querySelector('.offcanvas-body .nav-link[href="./services.html"]').innerHTML = `<i class="bi bi-database"></i> ` + i18next.t('services');
-                document.querySelector('.offcanvas-body .nav-link[href="./work.html"]').innerHTML = `<i class="bi bi-send"></i> ` + i18next.t('works');
-                document.querySelector('.offcanvas-body .nav-link[href="./contact.html"]').innerHTML = `<i class="bi bi-chat-left-text"></i> ` + i18next.t('contact');
-                document.querySelector('.offcanvas-body .dropdown .btn').textContent = i18next.t('changeLanguage');
-                document.querySelector('.offcanvas-footer small').textContent = i18next.t('changeAppearance');
-                document.querySelector('.offcanvas-footer a').innerHTML = i18next.t('letsTalk') + `<i class="bi bi-graph-up-arrow"></i>`;
-
-
-                const mainTitle = document.querySelector('.main-title');
-                if (mainTitle) {
-                    mainTitle.innerHTML = i18next.t('servicesOffered');
-                }
-
-                // Cập nhật mô tả dịch vụ
-                const cardText = document.querySelector('.text .card-text ');
-                if (cardText) {
-                    cardText.innerHTML = i18next.t('servicesDescription');
-                }
-
-                // Cập nhật trạng thái "Available For Hire"
-                const availableBtn = document.querySelector('.available-btn span');
-                if (availableBtn) {
-                    availableBtn.innerHTML = `<i class="bi bi-circle-fill"></i> ` + i18next.t('availableForHire');
-                }
-
-
-                document.querySelector('#headingOne button').innerHTML = i18next.t('faqTitle1');
-                document.querySelector('#collapseOne .accordion-body p').textContent = i18next.t('faqAnswer1');
-                document.querySelector('#headingTwo button').innerHTML = i18next.t('faqTitle2');
-                document.querySelector('#collapseTwo .accordion-body p').textContent = i18next.t('faqAnswer2');
-                document.querySelector('#headingThree button').innerHTML = i18next.t('faqTitle3');
-                document.querySelector('#collapseThree .accordion-body p').textContent = i18next.t('faqAnswer3');
-
-                document.querySelector('#headingFour button').innerHTML = i18next.t('faqTitle4');
-                document.querySelector('#collapseFour .accordion-body p').textContent = i18next.t('faqAnswer4');
-
-                document.querySelector('#headingFive button').innerHTML = i18next.t('faqTitle5');
-                document.querySelector('#collapseFive .accordion-body p').textContent = i18next.t('faqAnswer5');
-
-                document.querySelector('#headingSix button').innerHTML = i18next.t('faqTitle6');
-                document.querySelector('#collapseSix .accordion-body p').textContent = i18next.t('faqAnswer6');
-
-                document.querySelector('#headingSeven button').innerHTML = i18next.t('faqTitle7');
-                document.querySelector('#collapseSeven .accordion-body p').textContent = i18next.t('faqAnswer7');
-
-                document.querySelector('#headingEight button').innerHTML = i18next.t('faqTitle8');
-                document.querySelector('#collapseEight .accordion-body p').textContent = i18next.t('faqAnswer8');
-
-                document.querySelector('#headingNine button').innerHTML = i18next.t('faqTitle9');
-                document.querySelector('#collapseNine .accordion-body p').textContent = i18next.t('faqAnswer9');
-
-                document.querySelector('#headingTen button').innerHTML = i18next.t('faqTitle10');
-                document.querySelector('#collapseTen .accordion-body p').textContent = i18next.t('faqAnswer10');
-
-
-                const sliderItems = document.querySelectorAll('.slider-item a');
-                
-                if (sliderItems.length > 0) {
-                    sliderItems.forEach(item => item.innerHTML = i18next.t('letsWorkTogether'));
-                }
-            }
-            function changeLanguage(lng) {
-                i18next.changeLanguage(lng, function(err, t) {
-                    updateContent();
-                    localStorage.setItem('language', lng); // Lưu ngôn ngữ vào localStorage
-                });
-            }
-
-            document.querySelectorAll('.dropdown-menu button').forEach(button => {
-                button.addEventListener('click', function() {
-                const lang = this.textContent.trim().toLowerCase().includes('vietnamese') ? 'vi' : 'en';
-                changeLanguage(lang);
-                });
-            });
-            var clipboard = new ClipboardJS('.btn-copy');
-
-            // Xử lý sự kiện sau khi sao chép thành công
-            clipboard.on('success', function(e) {
-                var copyButton = e.trigger; // Nút đã được nhấn
-                copyButton.innerHTML = 'Copied'; // Thay đổi nội dung nút
-                setTimeout(function() {
-                    copyButton.innerHTML = '<i class="bi bi-copy"></i> Copy Email'; // Trở lại nội dung gốc sau 3 giây
-                }, 3000); // Sau 3 giây, nội dung của nút sẽ trở lại ban đầu
-            });
-
-            // Xử lý sự kiện khi sao chép thất bại
-            clipboard.on('error', function(e) {
-                alert('Failed to copy');
-            });
-        });
-    </script>
-    
+    <script src="./js/common.js"></script>
+    <script src="./js/services.js"></script>
 </body>
 </html>

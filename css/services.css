@@ -1,0 +1,61 @@
+.content-box-area .top-info {
+    display: block;
+    margin-bottom: 48px;
+}
+
+.content-box-area .top-info-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 24px;
+}
+
+.content-box-area .top-info-header .main-title {
+    flex: 1;
+    margin-bottom: 0;
+}
+
+.content-box-area .top-info-header .available-btn {
+    flex: none;
+}
+
+.content-box-area .top-info-description {
+    margin-top: 20px;
+}
+
+.content-box-area .top-info-description .card-text {
+    max-width: none;
+    margin-top: 0;
+    font-size: 18px;
+    line-height: 1.65;
+}
+
+@media (max-width: 992px) {
+    .content-box-area .top-info-header {
+        gap: 16px;
+    }
+
+    .content-box-area .top-info-description .card-text {
+        font-size: 15px;
+    }
+}
+
+@media (max-width: 576px) {
+    .content-box-area .top-info-header {
+        display: block;
+    }
+
+    .content-box-area .top-info-header .available-btn {
+        display: inline-block;
+        margin-top: 8px;
+    }
+
+    .content-box-area .top-info-description {
+        margin-top: 18px;
+    }
+
+    .content-box-area .top-info-description .card-text {
+        font-size: 16px;
+        line-height: 1.55;
+    }
+}
