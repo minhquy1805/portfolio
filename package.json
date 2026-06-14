@@ -2,17 +2,17 @@
   "name": "portfolio",
   "version": "1.0.0",
   "description": "Website portfolio cá nhân giới thiệu thông tin, kỹ năng, dịch vụ, dự án và phương thức liên hệ của Nguyen Minh Quy.",
-  "main": "index.js",
+  "main": "server/server.js",
   "scripts": {
-      "start": "node server/server.js",
-      "dev": "nodemon server/server.js"
+    "start": "node server/server.js",
+    "dev": "nodemon server/server.js"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/minhquy1805/portfolio.git"
   },
   "keywords": [],
-  "author": "",
+  "author": "Nguyen Minh Quy",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/minhquy1805/portfolio/issues"
@@ -21,6 +21,7 @@
   "dependencies": {
     "dotenv": "^17.4.2",
     "express": "^5.2.1",
+    "express-rate-limit": "^8.5.2",
     "nodemailer": "^8.0.11"
   },
   "devDependencies": {

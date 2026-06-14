@@ -181,12 +181,12 @@ const showSweetAlert = (type, success) => {
   document.getElementById('contact-form').addEventListener('submit', async (event) => {
     event.preventDefault();
      // Lấy dữ liệu từ form
-    const name = document.getElementById('name').value;
-    const email = document.getElementById('email').value;
+    const name = document.getElementById('name').value.trim();
+    const email = document.getElementById('email').value.trim();
     const company = document.getElementById('company').value.trim();
     const inquiryType = document.getElementById('inquiryType').value;
-    const subject = document.getElementById('subject').value;
-    const message = document.getElementById('message').value;
+    const subject = document.getElementById('subject').value.trim();
+    const message = document.getElementById('message').value.trim();
      // Đặt mặc định là hợp lệ
     let valid = true;
      // Xóa thông báo lỗi trước đó
@@ -197,9 +197,13 @@ const showSweetAlert = (type, success) => {
         valid = false;
     }
      // Kiểm tra email
-    const emailPattern = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailPattern.test(email)) {
         document.getElementById('email').nextElementSibling.innerHTML = 'Địa chỉ email không hợp lệ.';
+        valid = false;
+    }
+    if (company.length > 100) {
+        document.getElementById('company').nextElementSibling.innerHTML = 'Tên công ty không được vượt quá 100 ký tự.';
         valid = false;
     }
      // Kiểm tra subject

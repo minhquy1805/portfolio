@@ -1,20 +1,52 @@
 const path = require("path");
 const express = require("express");
+const { rateLimit } = require("express-rate-limit");
 const nodemailer = require("nodemailer");
 require("dotenv").config();
 
 const app = express();
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 3001;
 const rootPath = path.join(__dirname, "..");
+const CONTACT_BODY_LIMIT = "20kb";
+const CONTACT_RATE_LIMIT_WINDOW_MS = 15 * 60 * 1000;
+const CONTACT_RATE_LIMIT_MAX = 5;
+const INQUIRY_TYPES = new Set([
+    "Job Opportunity",
+    "Internship Opportunity",
+    "Freelance Project",
+    "Collaboration",
+    "Other"
+]);
+const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-app.use(express.json());
+const emailUser = process.env.PORTFOLIO_SMTP_USER || process.env.EMAIL_USER;
+const emailPassword = process.env.PORTFOLIO_SMTP_PASS || process.env.EMAIL_APP_PASSWORD;
+const emailReceiver = process.env.PORTFOLIO_CONTACT_EMAIL_TO || process.env.EMAIL_RECEIVER;
+
+if (!emailUser || !emailPassword || !emailReceiver) {
+    throw new Error("Missing required email environment variables.");
+}
+
+app.disable("x-powered-by");
+app.set("trust proxy", 1);
+app.use(express.json({ limit: CONTACT_BODY_LIMIT }));
 app.use(express.static(rootPath));
+
+const contactRateLimiter = rateLimit({
+    windowMs: CONTACT_RATE_LIMIT_WINDOW_MS,
+    limit: CONTACT_RATE_LIMIT_MAX,
+    standardHeaders: true,
+    legacyHeaders: false,
+    message: {
+        message: "Too many contact requests. Please try again in 15 minutes."
+    }
+});
 
 const transporter = nodemailer.createTransport({
     service: "gmail",
     auth: {
-        user: process.env.EMAIL_USER,
-        pass: process.env.EMAIL_APP_PASSWORD
+        user: emailUser,
+        pass: emailPassword
     }
 });
 
@@ -25,30 +57,102 @@ const escapeHtml = (value = "") => String(value)
     .replace(/"/g, "&quot;")
     .replace(/'/g, "&#039;");
 
-app.post("/api/contact", async (req, res) => {
-    const {
+const validateContact = (body) => {
+    const errors = {};
+
+    if (!body || typeof body !== "object" || Array.isArray(body)) {
+        return {
+            contact: null,
+            errors: {
+                body: "Request body must be a JSON object."
+            }
+        };
+    }
+
+    const readText = (field, label, minimum, maximum) => {
+        const value = body[field];
+
+        if (typeof value !== "string") {
+            errors[field] = `${label} must be text.`;
+            return "";
+        }
+
+        const normalizedValue = value.trim();
+
+        if (!normalizedValue) {
+            errors[field] = `${label} is required.`;
+        } else if (normalizedValue.length < minimum || normalizedValue.length > maximum) {
+            errors[field] = `${label} must be between ${minimum} and ${maximum} characters.`;
+        }
+
+        return normalizedValue;
+    };
+
+    const name = readText("name", "Name", 3, 30);
+    const email = readText("email", "Email", 3, 254).toLowerCase();
+    const inquiryType = readText("inquiryType", "Inquiry type", 1, 50);
+    const subject = readText("subject", "Subject", 1, 100);
+    const message = readText("message", "Message", 1, 500);
+
+    let company = "";
+    if (body.company !== undefined && body.company !== null && body.company !== "") {
+        if (typeof body.company !== "string") {
+            errors.company = "Company must be text.";
+        } else {
+            company = body.company.trim();
+
+            if (company.length > 100) {
+                errors.company = "Company must not exceed 100 characters.";
+            }
+        }
+    }
+
+    if (email && !errors.email && !EMAIL_PATTERN.test(email)) {
+        errors.email = "Email address is invalid.";
+    }
+
+    if (inquiryType && !errors.inquiryType && !INQUIRY_TYPES.has(inquiryType)) {
+        errors.inquiryType = "Inquiry type is invalid.";
+    }
+
+    if (/[\r\n]/.test(name)) {
+        errors.name = "Name must be on one line.";
+    }
+
+    if (/[\r\n]/.test(subject)) {
+        errors.subject = "Subject must be on one line.";
+    }
+
+    const contact = {
         name,
         email,
         company,
         inquiryType,
         subject,
         message
-    } = req.body;
+    };
 
-    if (!name || !email || !inquiryType || !subject || !message) {
-        return res.status(400).json({
-            message: "Please complete all required fields."
+    return {
+        contact,
+        errors
+    };
+};
+
+app.post("/api/contact", contactRateLimiter, async (req, res) => {
+    if (!req.is("application/json")) {
+        return res.status(415).json({
+            message: "Content-Type must be application/json."
         });
     }
 
-    const contact = {
-        name: String(name).trim(),
-        email: String(email).trim(),
-        company: String(company || "").trim(),
-        inquiryType: String(inquiryType).trim(),
-        subject: String(subject).trim(),
-        message: String(message).trim()
-    };
+    const { contact, errors } = validateContact(req.body);
+
+    if (!contact || Object.keys(errors).length > 0) {
+        return res.status(400).json({
+            message: "Please correct the invalid fields.",
+            errors
+        });
+    }
 
     const safeContact = Object.fromEntries(
         Object.entries(contact).map(([key, value]) => [key, escapeHtml(value)])
@@ -142,8 +246,8 @@ app.post("/api/contact", async (req, res) => {
 
     try {
         await transporter.sendMail({
-            from: `"Portfolio Contact" <${process.env.EMAIL_USER}>`,
-            to: process.env.EMAIL_RECEIVER,
+            from: `"Portfolio Contact" <${emailUser}>`,
+            to: emailReceiver,
             replyTo: contact.email,
             subject: `[Portfolio] ${contact.subject}`,
             text: textContent,
@@ -160,6 +264,26 @@ app.post("/api/contact", async (req, res) => {
             message: "Unable to send email."
         });
     }
+});
+
+app.use((error, req, res, next) => {
+    if (error?.type === "entity.too.large") {
+        return res.status(413).json({
+            message: `Request body must not exceed ${CONTACT_BODY_LIMIT}.`
+        });
+    }
+
+    if (error instanceof SyntaxError && error.status === 400 && "body" in error) {
+        return res.status(400).json({
+            message: "Request body contains invalid JSON."
+        });
+    }
+
+    console.error("Unhandled server error:", error);
+
+    return res.status(500).json({
+        message: "Internal server error."
+    });
 });
 
 app.listen(PORT, () => {
