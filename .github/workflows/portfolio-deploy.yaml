@@ -1,0 +1,93 @@
+name: Portfolio Deploy
+
+on:
+  workflow_dispatch:
+    inputs:
+      portfolio_version:
+        description: "Portfolio image version, example: portfolio-v1.0.0"
+        required: true
+        type: string
+
+permissions:
+  contents: read
+
+jobs:
+  deploy-portfolio:
+    name: Deploy Portfolio
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Validate input
+        id: version
+        shell: bash
+        run: |
+          VERSION="${{ inputs.portfolio_version }}"
+
+          if [[ ! "$VERSION" =~ ^portfolio-v[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
+            echo "Invalid portfolio version: $VERSION"
+            echo "Expected format: portfolio-vX.Y.Z, example: portfolio-v1.0.0"
+            exit 1
+          fi
+
+          echo "version=$VERSION" >> "$GITHUB_OUTPUT"
+          echo "Resolved portfolio version: $VERSION"
+
+      - name: Prepare SSH
+        shell: bash
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.VM_SSH_KEY }}" > ~/.ssh/commercialnews_vm_key
+          chmod 600 ~/.ssh/commercialnews_vm_key
+          ssh-keyscan -H "${{ secrets.VM_HOST }}" >> ~/.ssh/known_hosts
+
+      - name: Deploy portfolio on VM
+        shell: bash
+        run: |
+          PORTFOLIO_VERSION="${{ steps.version.outputs.version }}"
+
+          ssh -i ~/.ssh/commercialnews_vm_key "${{ secrets.VM_USER }}@${{ secrets.VM_HOST }}" \
+            "PORTFOLIO_VERSION='$PORTFOLIO_VERSION' bash -s" << 'EOF'
+          set -e
+
+          cd "${{ secrets.VM_DEPLOY_PATH }}"
+
+          echo "Pull latest deploy config"
+          git fetch origin
+          git reset --hard origin/main
+
+          echo "Set PORTFOLIO_IMAGE_VERSION=$PORTFOLIO_VERSION"
+          if grep -q '^PORTFOLIO_IMAGE_VERSION=' .env.prod; then
+            sed -i "s/^PORTFOLIO_IMAGE_VERSION=.*/PORTFOLIO_IMAGE_VERSION=$PORTFOLIO_VERSION/" .env.prod
+          else
+            echo "PORTFOLIO_IMAGE_VERSION=$PORTFOLIO_VERSION" >> .env.prod
+          fi
+
+          echo "Validate docker compose"
+          docker compose --env-file .env.prod -f docker-compose.prod.yaml config > /tmp/commercialnews-compose-check.yaml
+
+          echo "Pull portfolio image"
+          docker compose --env-file .env.prod -f docker-compose.prod.yaml pull minhquy-portfolio
+
+          echo "Up portfolio service"
+          docker compose --env-file .env.prod -f docker-compose.prod.yaml up -d minhquy-portfolio
+
+          echo "Ensure nginx is running"
+          docker compose --env-file .env.prod -f docker-compose.prod.yaml up -d nginx
+
+          echo "Wait for services"
+          sleep 10
+
+          echo "Check portfolio container image"
+          docker inspect minhquy-portfolio --format='{{.Config.Image}}'
+
+          echo "Check portfolio inside Docker network"
+          docker exec commercialnews-nginx wget -q -O- http://minhquy-portfolio:3001 > /tmp/minhquy-portfolio-check.html
+
+          echo "Check public HTTPS portfolio"
+          curl --retry 5 --retry-delay 3 --retry-connrefused -fsS -I https://portfolio.minhquy.dev
+
+          echo "Check public HTTP redirect"
+          curl --retry 5 --retry-delay 3 --retry-connrefused -fsS -I http://portfolio.minhquy.dev
+
+          echo "Portfolio deployment completed."
+          EOF
